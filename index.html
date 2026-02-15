@@ -65,6 +65,38 @@
             display: none !important;
         }
 
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+            transition: opacity .7s ease, transform .7s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll,
+            .reveal-on-scroll.is-visible {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        .timeline-card.aos-fade-left-fallback {
+            opacity: 0;
+            transform: translateX(28px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .timeline-card.aos-fade-left-fallback.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         i.bi {
             display: inline-block;
             font-family: bootstrap-icons !important;
@@ -141,7 +173,7 @@
             <nav class="navbar bg-white shadow-sm py-1">
                 <div class="container-fluid">
                     <div class="w-100 d-flex align-items-center justify-content-between">
-                        <a class="section-title navbar-brand" href="#top">V &amp; H</a>
+                        <a class="section-title navbar-brand" href="#top">TA &amp; TM</a>
                         <button class="navbar-toggler rounded-0 border-0 p-0" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <i class="bi bi-list fs-3 text-black"></i>
@@ -159,7 +191,7 @@
                 <div class="main_image_area">
                     <div data-aos-duration="2000" data-aos="flip-left" class="aos-init aos-animate">
                         <img
-                            src="https://cdn.biihappy.com/ziiweb/default/template/643d7a7706109e990f016274/adbe91da36d0b05ceedcfa265607ae76.jpg">
+                            src="./sources/top-image/top-image.JPG">
                     </div>
                     <div class="main_title text-center">
                         <img src="https://preview.iwedding.info/templates/template133/img/wedding-lable.png" alt="">
@@ -168,7 +200,7 @@
                 <div data-aos="fade-up" class="wedding_area my-3 text-center aos-init aos-animate">
                     <div class="title pt-3 pb-2">
                         <span class="groom_name">Tuấn Anh</span>
-                        <span>♥</span>
+                        <span style="color: #ee9baf;">♥</span>
                         <span class="bride_name">Thanh Mai</span>
                     </div>
                     <p class="invitation_day mb-0">Thứ 7. 14 / 03 / 2026</p>
@@ -243,40 +275,48 @@
                     Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh, trong khi yêu ai đó sâu sắc sẽ cho bạn dũng
                     khí.
                 </h3>
-                <div class="row gx-2" id="photoGalleryContainer" style="position: relative; height: 1231.35px;">
+                <div class="row gx-2" id="photoGalleryContainer" style="position: relative; height: 1640px;">
 
 
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
                         data-aos="fade-right" data-index="0" style="position: absolute; left: 0%; top: 0px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/61990296d7e97a1853119579/small.jpg">
+                            src="./sources/albums/Image1.jpg">
                     </div>
 
 
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
                         data-aos="fade-left" data-index="1" style="position: absolute; left: 50%; top: 0px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/619902a5f7c65c763d2ef0e2/small.jpg">
+                            src="./sources/albums/Image2.jpg">
                     </div>
 
 
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
-                        data-aos="fade-right" data-index="2" style="position: absolute; left: 50%; top: 403.25px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/619902a0d5c0e352ac024b43/small.jpg">
+                        data-aos="fade-right" data-index="2" style="position: absolute; left: 0%; top: 403.25px;"> <img
+                            src="./sources/albums/Image3.jpg">
                     </div>
 
 
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
-                        data-aos="fade-left" data-index="3" style="position: absolute; left: 0%; top: 403.775px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/61990322c41d7b37de534633/small.jpg">
+                        data-aos="fade-left" data-index="3" style="position: absolute; left: 50%; top: 403.775px;"> <img
+                            src="./sources/albums/Image4.jpg">
                     </div>
 
 
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
-                        data-aos="fade-right" data-index="4" style="position: absolute; left: 50%; top: 806.5px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/6199029c1ca1d308fe5da284/small.jpg">
+                        data-aos="fade-right" data-index="4" style="position: absolute; left: 0%; top: 806.5px;"> <img
+                            src="./sources/albums/Image5.jpg">
                     </div>
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
-                        data-aos="fade-left" data-index="5" style="position: absolute; left: 0%; top: 817.563px;"> <img
-                            src="https://cdn.biihappy.com/ziiweb/default/website/galleries/61990291c41d7b37de534632/small.jpg">
+                        data-aos="fade-left" data-index="5" style="position: absolute; left: 50%; top: 817.563px;"> <img
+                            src="./sources/albums/Image6.jpg">
+                    </div>
+                    <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
+                        data-aos="fade-right" data-index="6" style="position: absolute; left: 0%; top: 1210px;"> <img
+                            src="./sources/albums/Image7.jpg">
+                    </div>
+                    <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
+                        data-aos="fade-left" data-index="7" style="position: absolute; left: 50%; top: 1210px;"> <img
+                            src="./sources/albums/Image8.jpg">
                     </div>
                 </div>
                 <div class="text-center aos-init aos-animate" data-aos="fade-up">
@@ -2777,8 +2817,56 @@
                 });
             };
 
+            const bindAosFix = () => {
+                const aosElements = Array.from(document.querySelectorAll('[data-aos]'));
+                if (window.AOS?.init) {
+                    aosElements.forEach((element) => {
+                        element.classList.remove('aos-init', 'aos-animate');
+                    });
+
+                    window.AOS.init({
+                        once: true,
+                        duration: 700,
+                        easing: 'ease-out-cubic'
+                    });
+                    window.AOS.refreshHard?.();
+                    return;
+                }
+
+                aosElements.forEach((element) => {
+                    element.classList.add('aos-init', 'aos-animate');
+                });
+                return;
+            };
+
+            const bindImageRevealOnFirstScroll = () => {
+                const targets = Array.from(document.querySelectorAll('#gallery img, #story img, #couple img, #people img, #event .image-wrap, #donate img, .main_image_area img'));
+                if (!targets.length) return;
+
+                targets.forEach((item) => item.classList.add('reveal-on-scroll'));
+
+                if (!('IntersectionObserver' in window)) {
+                    targets.forEach((item) => item.classList.add('is-visible'));
+                    return;
+                }
+
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -8% 0px'
+                });
+
+                targets.forEach((item) => observer.observe(item));
+            };
+
             const init = async () => {
                 normalizePreviewLinksToHash();
+                bindAosFix();
                 bindSmoothScroll();
                 bindWishForm();
                 bindRsvpForm();
@@ -2790,6 +2878,7 @@
                 bindCountdown();
                 bindImagePreview();
                 bindGallerySliderPreview();
+                bindImageRevealOnFirstScroll();
                 try {
                     await loadData();
                     renderWishes();
