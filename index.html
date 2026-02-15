@@ -57,6 +57,12 @@
         .emoji-picker {
             bottom: -90px !important;
         }
+
+        .event-section .calendar-button,
+        .event-section .calendar-button-custom-click {
+            display: none !important;
+        }
+
         i.bi {
             display: inline-block;
             font-family: bootstrap-icons !important;
@@ -1844,11 +1850,11 @@
                     <div class="col-auto mb-3 d-flex">
                         <div class="me-2 w-50">
                             <input id="rsvp-name" type="text" class="form-control border-0"
-                                placeholder="Nhập tên của bạn*" name="name">
+                                placeholder="Nhập tên của bạn*" name="name" required>
                         </div>
                         <div class="ms-2 w-50">
                             <input id="rsvp-phone" type="text" class="form-control border-0" placeholder="Số điện thoại"
-                                name="phone">
+                                name="phone" required inputmode="numeric" maxlength="10" pattern="^0[0-9]{9}$">
                         </div>
                     </div>
                     <div class="col-auto mb-3">
@@ -1864,6 +1870,7 @@
                     </div>
                     <div class="col-auto text-center">
                         <button type="submit" class="p-2 w-50 rounded" id="btn-submit-rsvp">Gửi xác nhận</button>
+                        <div id="rsvp-submit-message" class="mt-2" style="display:none;"></div>
                     </div>
                 </form>
                 <!-- <div class="d-flex justify-content-end px-3 mb-2"><a id="download-rsvp-json" href="#"
@@ -2246,7 +2253,7 @@
                     const payload = { name, content, createdAt: new Date().toISOString() };
                     try {
                         await postJson(API_WISHES, payload);
-                        await loadData();
+                        await loadWishesData();
                         renderWishes();
                         form.reset();
                     } catch (error) {
@@ -2258,13 +2265,50 @@
             const bindRsvpForm = () => {
                 const form = document.getElementById('rsvp-form');
                 if (!form) return;
+
+                const submitMessage = document.getElementById('rsvp-submit-message');
+                const submitButton = document.getElementById('btn-submit-rsvp');
+                const normalizePhone = (value) => (value || '').replace(/\D/g, '');
+                const vietnamPhoneRegex = /^0(3|5|7|8|9)\d{8}$/;
+
+                const setMessage = (text, type = 'success') => {
+                    if (!submitMessage) return;
+                    submitMessage.style.display = text ? 'block' : 'none';
+                    submitMessage.textContent = text || '';
+                    submitMessage.style.color = type === 'error' ? '#dc3545' : '#198754';
+                    submitMessage.style.fontWeight = '600';
+                };
+
                 form.addEventListener('submit', async (event) => {
                     event.preventDefault();
                     const name = (document.getElementById('rsvp-name')?.value || '').trim();
                     const phone = (document.getElementById('rsvp-phone')?.value || '').trim();
                     const note = (document.getElementById('rsvp-note')?.value || '').trim();
                     const attendanceInput = form.querySelector('input[name="attendance"]:checked');
-                    if (!name || !attendanceInput) return;
+                    if (!name) {
+                        setMessage('Vui lòng nhập tên của bạn.', 'error');
+                        return;
+                    }
+
+                    if (!attendanceInput) {
+                        setMessage('Vui lòng chọn trạng thái tham dự.', 'error');
+                        return;
+                    }
+
+                    const normalizedPhone = normalizePhone(phone);
+                    if (!normalizedPhone) {
+                        setMessage('Vui lòng nhập số điện thoại để xác nhận.', 'error');
+                        return;
+                    }
+
+                    if (!vietnamPhoneRegex.test(normalizedPhone)) {
+                        setMessage('Số điện thoại không đúng định dạng Việt Nam (ví dụ: 0987654321).', 'error');
+                        return;
+                    }
+
+                    setMessage('');
+                    if (submitButton) submitButton.disabled = true;
+
                     const payload = {
                         name,
                         phone,
@@ -2272,39 +2316,67 @@
                         note,
                         createdAt: new Date().toISOString()
                     };
+
                     try {
+                        await loadRsvpData();
+                        const existed = rsvpData.some((item) => normalizePhone(item?.phone) === normalizedPhone);
+                        if (existed) {
+                            setMessage('Số điện thoại này đã xác nhận trước đó.', 'error');
+                            return;
+                        }
+
                         await postJson(API_RSVP, payload);
-                        await loadData();
+                        await loadRsvpData();
                         renderRsvp();
                         form.reset();
+                        setMessage('Cảm ơn vì bạn đã xác nhận.', 'success');
                     } catch (error) {
+                        setMessage('Không thể lưu xác nhận. Vui lòng thử lại.', 'error');
                         alert('Không thể lưu xác nhận. Vui lòng kiểm tra backend API để ghi vào file JSON.');
+                    } finally {
+                        if (submitButton) submitButton.disabled = false;
                     }
                 });
             };
 
-            const loadData = async () => {
+            const loadWishesData = async () => {
                 try {
-                    const [wishes, rsvps] = await Promise.all([
-                        fetchJson(API_WISHES),
-                        fetchJson(API_RSVP)
-                    ]);
+                    const wishes = await fetchJson(API_WISHES);
                     wishesData = Array.isArray(wishes) ? wishes : [];
+                    return;
+                } catch (_) { }
+
+                try {
+                    const wishes = await fetchJson(`${API_BASE}/wishes.json`);
+                    wishesData = Array.isArray(wishes) ? wishes : [];
+                } catch (_) {
+                    wishesData = [];
+                }
+            };
+
+            const loadRsvpData = async () => {
+                try {
+                    const rsvps = await fetchJson(API_RSVP);
                     rsvpData = Array.isArray(rsvps) ? rsvps : [];
                     return;
                 } catch (_) { }
 
                 try {
-                    const [wishes, rsvps] = await Promise.all([
-                        fetchJson(`${API_BASE}/wishes.json`),
-                        fetchJson(`${API_BASE}/rsvp.json`)
-                    ]);
-                    wishesData = Array.isArray(wishes) ? wishes : [];
+                    const rsvps = await fetchJson(`${API_BASE}/rsvp.json`);
                     rsvpData = Array.isArray(rsvps) ? rsvps : [];
                 } catch (_) {
-                    wishesData = [];
                     rsvpData = [];
                 }
+            };
+
+            const loadData = async () => {
+                try {
+                    await Promise.all([
+                        loadWishesData(),
+                        loadRsvpData()
+                    ]);
+                    return;
+                } catch (_) { }
             };
 
             const bindWishSuggestionLinks = () => {
@@ -2428,12 +2500,16 @@
                     document.removeEventListener('touchstart', resumeByUser, true);
                     document.removeEventListener('keydown', resumeByUser, true);
                     document.removeEventListener('click', resumeByUser, true);
+                    document.removeEventListener('wheel', resumeByUser, true);
+                    window.removeEventListener('scroll', resumeByUser, true);
                 };
 
                 document.addEventListener('pointerdown', resumeByUser, { once: true, capture: true });
                 document.addEventListener('touchstart', resumeByUser, { once: true, capture: true });
                 document.addEventListener('keydown', resumeByUser, { once: true, capture: true });
                 document.addEventListener('click', resumeByUser, { once: true, capture: true });
+                document.addEventListener('wheel', resumeByUser, { once: true, capture: true, passive: true });
+                window.addEventListener('scroll', resumeByUser, { once: true, capture: true, passive: true });
 
                 const startAutoRetry = () => {
                     if (autoRetryId) return;
