@@ -40,6 +40,12 @@
     <link href="https://preview.iwedding.info/common/calendar.css?v=20251121" rel="stylesheet">
     <link href="https://preview.iwedding.info/common/toastr/toastr.min.css?v=20251121" rel="stylesheet">
     <style>
+        #gallery-slider-modal{
+            height: 100vh;
+        }
+        #image-preview-modal{
+            height: 100vh;
+        }
         .emoji-picker {
             bottom: -90px !important;
         }
@@ -149,9 +155,9 @@
                         <span>♥</span>
                         <span class="bride_name">Thanh Mai</span>
                     </div>
-                    <p class="invitation_day mb-0">Thứ 5. 04 / 04 / 2024</p>
+                    <p class="invitation_day mb-0">Thứ 7. 14 / 03 / 2026</p>
                     <div class="day_area_inner pt-2">
-                        04<img src="https://preview.iwedding.info/templates/template133/img/heart-icon.png">04
+                        14<img src="https://preview.iwedding.info/templates/template133/img/heart-icon.png">03
                     </div>
                 </div>
             </div>
@@ -252,24 +258,11 @@
                         data-aos="fade-right" data-index="4" style="position: absolute; left: 50%; top: 806.5px;"> <img
                             src="https://cdn.biihappy.com/ziiweb/default/website/galleries/6199029c1ca1d308fe5da284/small.jpg">
                     </div>
-
-
                     <div class="col-6 gallery-item section-sub-title mb-2 btn-see-more-gallery aos-init aos-animate"
                         data-aos="fade-left" data-index="5" style="position: absolute; left: 0%; top: 817.563px;"> <img
                             src="https://cdn.biihappy.com/ziiweb/default/website/galleries/61990291c41d7b37de534632/small.jpg">
                     </div>
-
-
-
-
-
-
-
-
-
-
                 </div>
-
                 <div class="text-center aos-init aos-animate" data-aos="fade-up">
                     <a id="btn-see-more-gallery" class="btn btn-secondary mt-4 btn-see-more-gallery">
                         <span> Tất cả hình ảnh </span>
@@ -471,8 +464,8 @@
                         </div>
                         <div data-aos="fade-up" class="invitation-content text-center aos-init aos-animate">
                             Cảm ơn tất cả những người bạn thân yêu của tôi!<br>
-                            Tôi biết các bạn rất bận rộn, bận rộn với công việc, bận rộn với công việc gia đình…<br>
-                            Nhưng tất cả đã có mặt hôm nay để chúc mừng tinh yêu và hạnh phúc của chúng tôi.<br>
+                            Tôi biết các bạn rất bận rộn, bận rộn với công việc, bận rộn với công việc gia đình…<br>
+                            Nhưng tất cả đã có mặt hôm nay để chúc mừng tình yêu và hạnh phúc của chúng tôi.<br>
                             Một lần nữa chân thành cảm ơn tất cả các bạn!
                         </div>
                     </div>
@@ -2587,7 +2580,7 @@
                     modalEl.tabIndex = -1;
                     modalEl.setAttribute('aria-hidden', 'true');
                     modalEl.innerHTML = `
-            <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-transparent border-0">
                     <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     <img id="image-preview-target" src="" alt="Preview" style="width:100%;max-height:90vh;object-fit:contain;border-radius:8px;" />
@@ -2618,6 +2611,54 @@
                 });
             };
 
+            const bindGallerySliderPreview = () => {
+                const openButton = document.getElementById('btn-see-more-gallery');
+                const galleryImages = Array.from(document.querySelectorAll('#photoGalleryContainer img'));
+                if (!openButton || !galleryImages.length) return;
+
+                let modalEl = document.getElementById('gallery-slider-modal');
+                if (!modalEl) {
+                    modalEl = document.createElement('div');
+                    modalEl.id = 'gallery-slider-modal';
+                    modalEl.className = 'modal fade';
+                    modalEl.tabIndex = -1;
+                    modalEl.setAttribute('aria-hidden', 'true');
+
+                    const carouselItems = galleryImages.map((img, index) => `
+                        <div class="carousel-item${index === 0 ? ' active' : ''}">
+                            <img src="${img.getAttribute('src') || ''}" class="d-block w-100" alt="Gallery ${index + 1}" style="max-height:85vh;object-fit:contain;" />
+                        </div>
+                    `).join('');
+
+                    modalEl.innerHTML = `
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content bg-transparent border-0">
+                                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div id="gallery-slider-carousel" class="carousel slide" data-bs-ride="false">
+                                    <div class="carousel-inner">${carouselItems}</div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#gallery-slider-carousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#gallery-slider-carousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modalEl);
+                }
+
+                const modalInstance = window.bootstrap?.Modal ? new window.bootstrap.Modal(modalEl) : null;
+                openButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (!modalInstance) return;
+                    modalInstance.show();
+                });
+            };
+
             const init = async () => {
                 normalizePreviewLinksToHash();
                 bindSmoothScroll();
@@ -2629,6 +2670,7 @@
                 bindMusicPlayer();
                 bindCountdown();
                 bindImagePreview();
+                bindGallerySliderPreview();
                 try {
                     await loadData();
                     renderWishes();
