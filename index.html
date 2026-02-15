@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -40,11 +39,20 @@
     <link href="https://preview.iwedding.info/common/calendar.css?v=20251121" rel="stylesheet">
     <link href="https://preview.iwedding.info/common/toastr/toastr.min.css?v=20251121" rel="stylesheet">
     <style>
+        html,
+        body {
+            max-width: 100%;
+        }
+
+        #header {
+            width: 100% !important;
+        }
         #gallery-slider-modal{
             height: 100vh;
         }
         #image-preview-modal{
             height: 100vh;
+            width: 100%;
         }
         .emoji-picker {
             bottom: -90px !important;
@@ -2078,6 +2086,9 @@
         </div>
     </div>
     <style>
+        .banner-section .bgm_area {
+            background-color: #eeb1c1 !important;
+        }
         .bii-player {
             position: fixed !important;
             left: 20px !important;
@@ -2094,6 +2105,7 @@
         }
 
         .snowfall-flakes {
+            position: fixed !important;
             pointer-events: none !important;
         }
 
@@ -2471,6 +2483,34 @@
                 setTimeout(triggerPlayerClickFallback, 3000);
             };
 
+            const enforceFixedBiiPlayer = () => {
+                const player = document.querySelector('.bii-player');
+                if (!player) return;
+
+                if (player.parentElement !== document.body) {
+                    document.body.appendChild(player);
+                }
+
+                const lockPosition = () => {
+                    player.style.setProperty('position', 'fixed', 'important');
+                    player.style.setProperty('left', '20px', 'important');
+                    player.style.setProperty('bottom', '20px', 'important');
+                    player.style.setProperty('top', 'auto', 'important');
+                    player.style.setProperty('right', 'auto', 'important');
+                    player.style.setProperty('transform', 'none', 'important');
+                    player.style.setProperty('z-index', '2147483647', 'important');
+                    player.style.setProperty('display', 'block', 'important');
+                    player.style.setProperty('visibility', 'visible', 'important');
+                    player.style.setProperty('opacity', '1', 'important');
+                    player.style.setProperty('pointer-events', 'auto', 'important');
+                };
+
+                lockPosition();
+                window.addEventListener('scroll', lockPosition, { passive: true });
+                window.addEventListener('resize', lockPosition);
+                window.addEventListener('orientationchange', lockPosition);
+            };
+
             const bindOffcanvasFallback = () => {
                 if (window.bootstrap?.Offcanvas) return;
                 const panel = document.getElementById('offcanvasNavbar');
@@ -2583,7 +2623,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-transparent border-0">
                     <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <img id="image-preview-target" src="" alt="Preview" style="width:100%;max-height:90vh;object-fit:contain;border-radius:8px;" />
+                    <img id="image-preview-target" src="" alt="Preview" style="width:100%;height:auto;object-fit:contain;border-radius:8px;" />
                 </div>
             </div>
         `;
@@ -2668,6 +2708,7 @@
                 bindEmojiPicker();
                 bindOffcanvasFallback();
                 bindMusicPlayer();
+                enforceFixedBiiPlayer();
                 bindCountdown();
                 bindImagePreview();
                 bindGallerySliderPreview();
