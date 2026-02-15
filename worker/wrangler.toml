@@ -3,9 +3,9 @@ main = "src/index.js"
 compatibility_date = "2026-02-15"
 
 [vars]
-GITHUB_OWNER = "your-github-owner"
-GITHUB_REPO = "your-repo-name"
+GITHUB_OWNER = "manutd0605"
+GITHUB_REPO = "wedding"
 GITHUB_BRANCH = "main"
 WISHES_FILE_PATH = "wishes.json"
 RSVP_FILE_PATH = "rsvp.json"
-ALLOWED_ORIGIN = "*"
+ALLOWED_ORIGIN = "https://manutd0605.github.io"

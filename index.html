@@ -2003,8 +2003,8 @@
         <div class="btn-menu-open" style="display: none;">
             <i class="bi bi-list text-white"></i>
         </div>
-        <div class="btn-menu-close" style="display: block;padding-top: 6px;">
-            <i class="bi bi-x-lg text-white"></i>
+        <div class="btn-menu-close" style="display: block;">
+            <i class="bi bi-x-lg text-white" style="padding-top: 3px;"></i>
         </div>
         <ul class="p-0 m-0 list-menu-icon" style="opacity: 1;">
             <li class="text-center">
@@ -2119,7 +2119,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        window.WEDDING_API_BASE = window.WEDDING_API_BASE || 'https://wedding-json-api.<subdomain>.workers.dev';
+        window.WEDDING_API_BASE = window.WEDDING_API_BASE || 'https://manutd0605-wedding-api.workers.dev';
     </script>
 
     <script>
@@ -2127,11 +2127,8 @@
             const API_BASE = (window.WEDDING_API_BASE || '').replace(/\/$/, '');
             const API_WISHES = `${API_BASE}/api/wishes`;
             const API_RSVP = `${API_BASE}/api/rsvp`;
-            const STORAGE_WISHES = 'wedding_wishes_fallback';
-            const STORAGE_RSVP = 'wedding_rsvp_fallback';
             let wishesData = [];
             let rsvpData = [];
-            let persistenceMode = 'api';
 
             const fetchJson = async (url) => {
                 const response = await fetch(url, { cache: 'no-store' });
@@ -2147,20 +2144,6 @@
                 });
                 if (!response.ok) throw new Error('Request failed: ' + response.status);
                 return response.json();
-            };
-
-            const readLocal = (key) => {
-                try {
-                    const raw = localStorage.getItem(key);
-                    const parsed = raw ? JSON.parse(raw) : [];
-                    return Array.isArray(parsed) ? parsed : [];
-                } catch (_) {
-                    return [];
-                }
-            };
-
-            const writeLocal = (key, data) => {
-                localStorage.setItem(key, JSON.stringify(data, null, 2));
             };
 
             const setDownload = (anchorId, filePath, fileName) => {
@@ -2254,12 +2237,7 @@
                         renderWishes();
                         form.reset();
                     } catch (error) {
-                        persistenceMode = 'fallback';
-                        wishesData.push(payload);
-                        writeLocal(STORAGE_WISHES, wishesData);
-                        renderWishes();
-                        refreshDownloadLinks();
-                        form.reset();
+                        alert('Không thể lưu lời chúc. Vui lòng kiểm tra backend API để ghi vào file JSON.');
                     }
                 });
             };
@@ -2287,12 +2265,7 @@
                         renderRsvp();
                         form.reset();
                     } catch (error) {
-                        persistenceMode = 'fallback';
-                        rsvpData.push(payload);
-                        writeLocal(STORAGE_RSVP, rsvpData);
-                        renderRsvp();
-                        refreshDownloadLinks();
-                        form.reset();
+                        alert('Không thể lưu xác nhận. Vui lòng kiểm tra backend API để ghi vào file JSON.');
                     }
                 });
             };
@@ -2305,7 +2278,6 @@
                     ]);
                     wishesData = Array.isArray(wishes) ? wishes : [];
                     rsvpData = Array.isArray(rsvps) ? rsvps : [];
-                    persistenceMode = 'api';
                     return;
                 } catch (_) { }
 
@@ -2320,14 +2292,6 @@
                     wishesData = [];
                     rsvpData = [];
                 }
-
-                const localWishes = readLocal(STORAGE_WISHES);
-                const localRsvp = readLocal(STORAGE_RSVP);
-                if (localWishes.length || localRsvp.length) {
-                    wishesData = localWishes;
-                    rsvpData = localRsvp;
-                }
-                persistenceMode = 'fallback';
             };
 
             const bindWishSuggestionLinks = () => {
@@ -2355,6 +2319,7 @@
 
                 audio.setAttribute('playsinline', '');
                 audio.preload = 'auto';
+                audio.volume = 1;
 
                 const updateIcon = () => {
                     const isPlaying = !audio.paused;
@@ -2363,6 +2328,10 @@
                 };
 
                 const tryAutoPlay = () => {
+                    if (!audio.paused) {
+                        updateIcon();
+                        return;
+                    }
                     audio.muted = true;
                     audio.play().then(() => {
                         audio.muted = false;
@@ -2382,6 +2351,11 @@
                     });
                 };
 
+                const triggerPlayerClickFallback = () => {
+                    if (!audio.paused) return;
+                    player.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+                };
+
                 player.addEventListener('click', (event) => {
                     event.preventDefault();
                     if (audio.paused) {
@@ -2395,8 +2369,15 @@
 
                 audio.addEventListener('play', updateIcon);
                 audio.addEventListener('pause', updateIcon);
+                audio.addEventListener('loadeddata', tryAutoPlay, { once: true });
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden && audio.paused) {
+                        tryAutoPlay();
+                    }
+                });
                 updateIcon();
                 tryAutoPlay();
+                setTimeout(triggerPlayerClickFallback, 600);
             };
 
             const bindOffcanvasFallback = () => {
@@ -3431,7 +3412,7 @@
     <div class="snowfall-flakes"
         style="background: rgb(255, 255, 255); width: 2.41px; height: 2.41px; position: absolute; font-size: 0px; z-index: 999999; border-radius: 8px; box-shadow: rgb(85, 85, 85) 1px 1px 1px; top: 1744px; left: 366.819px;">
     </div><audio src="https://cdn.biihappy.com/ziiweb/wedding-musics/IDo-911.mp3" controls="controls" loop=""
-        autoplay="autoplay" style="display: none;"></audio>
+        autoplay="autoplay" playsinline="playsinline" style="display: none;"></audio>
 </body>
 
 </html>
