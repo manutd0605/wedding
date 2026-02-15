@@ -463,7 +463,7 @@
                             <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
                                 <div data-aos="flip-left" class="member-image animation aos-init aos-animate">
                                     <img
-                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/6a8d2239a50e814e83274935ce75857b.jpeg">
+                                        src="./sources/person-info/Image1.jpg">
                                 </div>
                                 <div data-aos="fade-left" class="member-name fs-5 my-2 aos-init aos-animate">
                                     to. GROOM
@@ -507,7 +507,7 @@
                             <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
                                 <div data-aos="flip-right" class="member-image animation aos-init aos-animate">
                                     <img
-                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/0a34be7c00b62a2bf0186e4e052ad52b.jpeg">
+                                        src="./sources/person-info/Image2.jpg">
                                 </div>
                                 <div data-aos="fade-right" class="member-name fs-5 my-2 aos-init aos-animate">
                                     to. BRIDE
@@ -553,7 +553,7 @@
             </div>
         </section>
 
-        <section class="py-5 story-section section-bg-affect" id="story">
+        <section class="py-5 story-section section-bg-affect" id="story" style="margin-top: 10rem;">
             <div class="container-fluid">
                 <h2 data-aos="fade-up" class="section-title text-center aos-init aos-animate">
                     Chuyện tình yêu
@@ -577,7 +577,7 @@
                                         Mà nào hay biết, 4 năm sau người ấy lại là chồng mình.
                                     </p>
                                     <div class="img-holder">
-                                        <img src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/e376fb8cf57e4b7c116c43b2d20afece.jpeg"
+                                        <img src="./sources/story-image/Image1.jpg"
                                             alt="">
                                     </div>
                                 </div>
@@ -595,7 +595,7 @@
                                         làm những điều ấy cùng em”.
                                     </p>
                                     <div class="img-holder">
-                                        <img src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/c09dacc5dc03097b634b7cd5c2bf13ae.jpeg"
+                                        <img src="./sources/story-image/Image2.jpg"
                                             alt="">
                                     </div>
                                 </div>
@@ -613,7 +613,7 @@
                                         cùng anh.
                                     </p>
                                     <div class="img-holder">
-                                        <img src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/1cc9bc5c5cbd1474df682ea1932316b2.jpeg"
+                                        <img src="./sources/story-image/Image3.jpg"
                                             alt="">
                                     </div>
                                 </div>
@@ -630,7 +630,7 @@
                                         của anh và sau này sẽ là mẹ của các con anh.
                                     </p>
                                     <div class="img-holder">
-                                        <img src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/7347d56229fbeff7b7306d0eded2b93e.jpeg"
+                                        <img src="./sources/story-image/Image4.jpg"
                                             alt="">
                                     </div>
                                 </div>
@@ -646,7 +646,7 @@
                 <div class="w-100">
                     <div data-aos="fade-up" class="couple-img mb-5 aos-init aos-animate">
                         <img
-                            src="https://cdn.biihappy.com/ziiweb/default/template/643d7a7706109e990f016274/aed112329940c37e52ed5218b8302774.jpg">
+                            src="./sources/story-image/story-end.JPG">
                     </div>
                     <div data-aos="fade-up" class="wrap-invi-content p-3 pt-8 mb-5 aos-init aos-animate">
                         <div data-aos="fade-left" class="mb-5 title-small aos-init aos-animate">
@@ -1046,14 +1046,14 @@
                         class="p-3 mb-3 contact-validation-active" novalidate="novalidate">
                         <div class="col-auto mb-3 d-flex">
                             <div class="w-100">
-                                <input id="name-comment" type="text" class="form-control border-0"
+                                <input id="name-comment" type="text" class="form-control"
                                     placeholder="Nhập tên của bạn*" name="name">
                             </div>
                         </div>
                         <div class="col-auto mb-3">
                             <div class="textarea-emoji-picker position-relative">
                                 <div class="vitualTextarea">
-                                    <textarea id="content" name="content" class="form-control border-0" rows="3" cols=""
+                                    <textarea id="content" name="content" class="form-control" rows="3" cols=""
                                         placeholder="Nhập lời chúc của bạn*"></textarea>
                                     <div class="textAreaIcons">
                                         <!-- <span class="show-autocomplete tooltip-custom" data-toggle="tooltip"
@@ -1915,30 +1915,36 @@
                 <h3 data-aos="fade-up" class="section-sub-title mb-4 text-center aos-init aos-animate">Vui lòng xác nhận
                     bạn có thể tham gia hay không.</h3>
                 <form id="rsvp-form" class="p-3 mb-3 contact-validation-active" novalidate="novalidate">
-                    <div class="col-auto mb-3 d-flex">
-                        <div class="me-2 w-50">
-                            <input id="rsvp-name" type="text" class="form-control border-0"
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-6">
+                            <input id="rsvp-name" type="text" class="form-control"
                                 placeholder="Nhập tên của bạn*" name="name" required>
                         </div>
-                        <div class="ms-2 w-50">
-                            <input id="rsvp-phone" type="text" class="form-control border-0" placeholder="Số điện thoại"
+                        <div class="col-12 col-md-6">
+                            <input id="rsvp-phone" type="text" class="form-control" placeholder="Số điện thoại"
                                 name="phone" required inputmode="numeric" maxlength="10" pattern="^0[0-9]{9}$">
                         </div>
                     </div>
-                    <div class="col-auto mb-3">
-                        <div class="d-flex gap-4 px-2">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="d-flex flex-column flex-sm-row gap-3 px-2">
                             <label><input type="radio" name="attendance" value="Có" required> Có thể tham gia</label>
                             <label><input type="radio" name="attendance" value="Không" required> Không thể tham
                                 gia</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-auto mb-3">
-                        <textarea id="rsvp-note" name="note" class="form-control border-0" rows="3"
-                            placeholder="Ghi chú thêm (không bắt buộc)"></textarea>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <textarea id="rsvp-note" name="note" class="form-control" rows="3"
+                                placeholder="Ghi chú thêm (không bắt buộc)"></textarea>
+                        </div>
                     </div>
-                    <div class="col-auto text-center">
-                        <button type="submit" class="p-2 w-50 rounded" id="btn-submit-rsvp">Gửi xác nhận</button>
-                        <div id="rsvp-submit-message" class="mt-2" style="display:none;"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mx-auto text-center">
+                            <button type="submit" class="p-2 w-100 rounded" id="btn-submit-rsvp">Gửi xác nhận</button>
+                            <div id="rsvp-submit-message" class="mt-2" style="display:none;"></div>
+                        </div>
                     </div>
                 </form>
                 <!-- <div class="d-flex justify-content-end px-3 mb-2"><a id="download-rsvp-json" href="#"
@@ -2244,32 +2250,6 @@
                 line-height: 1;
             }
 
-            .contact-validation-active .col-auto {
-                width: 100%;
-                max-width: 100%;
-                flex: 0 0 100%;
-            }
-
-            .contact-validation-active .col-auto.mb-3.d-flex {
-                display: block !important;
-            }
-
-            .contact-validation-active .col-auto.mb-3.d-flex > div {
-                width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            .contact-validation-active input.form-control,
-            .contact-validation-active textarea.form-control,
-            .contact-validation-active select.form-control {
-                width: 100%;
-            }
-
-            .contact-validation-active .col-auto .d-flex.gap-4 {
-                flex-direction: column;
-                gap: 8px !important;
-            }
         }
     </style>
 
@@ -2453,9 +2433,14 @@
 
                     try {
                         await loadRsvpData();
-                        const existed = rsvpData.some((item) => normalizePhone(item?.phone) === normalizedPhone);
+                        const selectedAttendance = attendanceInput.value;
+                        const existed = rsvpData.some((item) => {
+                            const samePhone = normalizePhone(item?.phone) === normalizedPhone;
+                            const sameAttendance = (item?.attendance || '').toString().trim() === selectedAttendance;
+                            return samePhone && sameAttendance;
+                        });
                         if (existed) {
-                            setMessage('Số điện thoại này đã xác nhận trước đó.', 'error');
+                            setMessage('Số điện thoại này đã xác nhận cùng trạng thái tham dự trước đó.', 'error');
                             return;
                         }
 
