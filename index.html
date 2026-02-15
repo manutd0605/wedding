@@ -65,6 +65,29 @@
             display: none !important;
         }
 
+        #photoGalleryContainer {
+            height: auto !important;
+        }
+
+        #photoGalleryContainer .gallery-item {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+        }
+
+        #photoGalleryContainer .gallery-item img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 767.98px) {
+            #photoGalleryContainer .gallery-item img {
+                height: 220px;
+            }
+        }
+
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(18px) scale(0.98);
@@ -200,7 +223,7 @@
                 <div data-aos="fade-up" class="wedding_area my-3 text-center aos-init aos-animate">
                     <div class="title pt-3 pb-2">
                         <span class="groom_name">Tuấn Anh</span>
-                        <span style="color: #ee9baf;">♥</span>
+                        <span class="couple-heart" style="color: #ee9baf;">♥</span>
                         <span class="bride_name">Thanh Mai</span>
                     </div>
                     <p class="invitation_day mb-0">Thứ 7. 14 / 03 / 2026</p>
@@ -332,7 +355,9 @@
                 <div class="w-100">
                     <div class="text-center">
                         <p class="main_dday_name title py-1 px-3">
-                            Tuấn Anh ♥ Thanh Mai
+                            <span class="dday-groom">Tuấn Anh</span>
+                            <span class="couple-heart" style="color: #ee9baf;">♥</span>
+                            <span class="dday-bride">Thanh Mai</span>
                         </p>
                     </div>
                     <div class="mini_calendar m-auto pb-3 aos-init aos-animate" data-aos="fade-up-right">
@@ -411,6 +436,116 @@
                             </div>
                             <div class="box">
                                 <div>56</div> <span>Giây</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="couple-section py-5 section-bg-affect container-fluid px-3" id="couple">
+            <div class="">
+                <div data-aos="fade-up" class="wrap-img-title section-title text-center mb-5 aos-init aos-animate">
+                    <h2 class="mb-3 section-title">- Groom &amp; Bride -</h2>
+                    <p class="sub-title mb-5">Giới thiệu một chú rể đẹp trai và cô dâu xinh đẹp</p>
+                    <div class="wrap-img-medal">
+                        <p class="d-flex text justify-content-center">
+                            Tuấn Anh
+                            <span>
+                                <img src="https://preview.iwedding.info/templates/template133/img/heart-icon.png" alt="">
+                            </span> Thanh Mai
+                        </p>
+                    </div>
+                </div>
+                <div class="section-title section-sub-title wrap-people d-flex ">
+                    <div class="flip-card member member-groom col">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
+                                <div data-aos="flip-left" class="member-image animation aos-init aos-animate">
+                                    <img
+                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/6a8d2239a50e814e83274935ce75857b.jpeg">
+                                </div>
+                                <div data-aos="fade-left" class="member-name fs-5 my-2 aos-init aos-animate">
+                                    to. GROOM
+                                </div>
+                                <div class="invitation-groom-parent d-flex flex-column mx-auto text-center">
+                                    <div class="parent-name">Con ông: <span>Hoàng Anh Kiệt</span></div>
+
+                                    <div class="parent-name">Con bà: <span>Nguyễn Thị Hoài</span></div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back d-flex flex-column justify-content-between border">
+                                <div class="h-75 wrap-story my-4 px-2">
+                                    <p class="text-hover text-story">
+                                        Là bác sĩ nha khoa hiện đang công tác tại một phòng khám nha khoa ở Quận 1 thành
+                                        phồ Hồ Chí Minh. Là một người hiền lành và ít nói. Luôn coi trọng tình cảm và
+                                        yêu thương gia đình. Với anh: “Gia đình là điểm tựa vững chắc nhất và là bến đỗ
+                                        bình yên không đâu sánh bằng đối với mỗi con người. Đó luôn là nơi tràn ngập
+                                        tình yêu thương để ta trở về.”
+                                    </p>
+                                    <a class="fw-bold fs-6 d-none text-center text-decoration-none text-white"
+                                        tabindex="0" role="button" id="btn-show-story" data-bs-toggle="popover"
+                                        data-bs-title="Tuấn Anh" data-bs-trigger="focus" data-bs-placement="bottom"
+                                        data-bs-content="Là bác sĩ nha khoa hiện đang công tác tại một phòng khám nha khoa ở Quận 1 thành phồ Hồ Chí Minh. Là một người hiền lành và ít nói. Luôn coi trọng tình cảm và yêu thương gia đình. Với anh: “Gia đình là điểm tựa vững chắc nhất và là bến đỗ bình yên không đâu sánh bằng đối với mỗi con người. Đó luôn là nơi tràn ngập tình yêu thương để ta trở về.”">Xem
+                                        thêm</a>
+                                </div>
+                                <ul class="member-contact social-links d-flex p-0 mb-4">
+                                    <li> <a href="https://facebook.com/" target="_blank"> <i class="bi bi-facebook"></i>
+                                        </a> </li>
+
+                                    <li> <a href="https://twitter.com/" target="_blank"> <i class="bi bi-twitter"></i>
+                                        </a> </li>
+
+                                    <li> <a href="https://instagram.com/" target="_blank"> <i
+                                                class="bi bi-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card member member-bride col">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
+                                <div data-aos="flip-right" class="member-image animation aos-init aos-animate">
+                                    <img
+                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/0a34be7c00b62a2bf0186e4e052ad52b.jpeg">
+                                </div>
+                                <div data-aos="fade-right" class="member-name fs-5 my-2 aos-init aos-animate">
+                                    to. BRIDE
+                                </div>
+                                <div class="invitation-groom-parent d-flex flex-column mx-auto text-center">
+                                    <div class="parent-name">Con ông: <span>Ngô Xuân Nghĩa</span></div>
+
+                                    <div class="parent-name">Con bà: <span>Trần Hồng Thắm</span></div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back d-flex flex-column justify-content-between border">
+                                <div class="h-75 wrap-story my-4 px-2">
+                                    <p class="text-hover text-story">
+                                        Cô gái đến từ xứ Huế mộng mơ, hiện đang sinh sống và làm việc tại Sài Gòn. Sau
+                                        khi tốt nghiệp Học viện Báo chí và Tuyên truyền, quyết tâm theo đuổi đam mê làm
+                                        phóng viên du lịch. Là một người hay cười nhưng lại sống nội tâm, thích đọc
+                                        sách, trồng cây và yêu thiên nhiên. Ngoài ra còn rất thích vẽ vời, nuôi mèo và
+                                        nuôi ước mơ có cho mình một vườn hồng khoe sắc.
+                                    </p>
+                                    <a class="fw-bold fs-6 d-none text-center text-decoration-none text-white"
+                                        tabindex="0" role="button" id="btn-show-story" data-bs-toggle="popover"
+                                        data-bs-title="Thanh Mai" data-bs-trigger="focus" data-bs-placement="bottom"
+                                        data-bs-content="Cô gái đến từ xứ Huế mộng mơ, hiện đang sinh sống và làm việc tại Sài Gòn. Sau khi tốt nghiệp Học viện Báo chí và Tuyên truyền, quyết tâm theo đuổi đam mê làm phóng viên du lịch. Là một người hay cười nhưng lại sống nội tâm, thích đọc sách, trồng cây và yêu thiên nhiên. Ngoài ra còn rất thích vẽ vời, nuôi mèo và nuôi ước mơ có cho mình một vườn hồng khoe sắc.">Xem
+                                        thêm</a>
+                                </div>
+                                <ul class="member-contact social-links d-flex p-0 mb-4">
+                                    <li> <a href="https://facebook.com/" target="_blank"> <i class="bi bi-facebook"></i>
+                                        </a> </li>
+
+
+                                    <li> <a href="https://twitter.com/" target="_blank"> <i class="bi bi-twitter"></i>
+                                        </a> </li>
+
+
+                                    <li> <a href="https://instagram.com/" target="_blank"> <i
+                                                class="bi bi-instagram"></i> </a> </li>
+
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -530,111 +665,6 @@
                                 <img src="https://preview.iwedding.info/templates/template133/img/heart-icon.png"
                                     alt="">
                             </span> Thanh Mai</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="couple-section py-5 section-bg-affect container-fluid px-3" id="couple">
-            <div class="">
-                <div data-aos="fade-up" class="wrap-img-title section-title text-center mb-5 aos-init aos-animate">
-                    <h2 class="mb-3 section-title">- Groom &amp; Bride -</h2>
-                    <p class="sub-title mb-5">Giới thiệu một chú rể đẹp trai và cô dâu xinh đẹp</p>
-                    <div class="wrap-img-medal">
-                        <p class="text-center"> Tuấn Anh <span>♥</span> Thanh Mai </p>
-                    </div>
-                </div>
-                <div class="section-title section-sub-title wrap-people d-flex ">
-                    <div class="flip-card member member-groom col">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
-                                <div data-aos="flip-left" class="member-image animation aos-init aos-animate">
-                                    <img
-                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/6a8d2239a50e814e83274935ce75857b.jpeg">
-                                </div>
-                                <div data-aos="fade-left" class="member-name fs-5 my-2 aos-init aos-animate">
-                                    to. GROOM
-                                </div>
-                                <div class="invitation-groom-parent d-flex flex-column mx-auto text-center">
-                                    <div class="parent-name">Con ông: <span>Hoàng Anh Kiệt</span></div>
-
-                                    <div class="parent-name">Con bà: <span>Nguyễn Thị Hoài</span></div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back d-flex flex-column justify-content-between border">
-                                <div class="h-75 wrap-story my-4 px-2">
-                                    <p class="text-hover text-story">
-                                        Là bác sĩ nha khoa hiện đang công tác tại một phòng khám nha khoa ở Quận 1 thành
-                                        phồ Hồ Chí Minh. Là một người hiền lành và ít nói. Luôn coi trọng tình cảm và
-                                        yêu thương gia đình. Với anh: “Gia đình là điểm tựa vững chắc nhất và là bến đỗ
-                                        bình yên không đâu sánh bằng đối với mỗi con người. Đó luôn là nơi tràn ngập
-                                        tình yêu thương để ta trở về.”
-                                    </p>
-                                    <a class="fw-bold fs-6 d-none text-center text-decoration-none text-white"
-                                        tabindex="0" role="button" id="btn-show-story" data-bs-toggle="popover"
-                                        data-bs-title="Tuấn Anh" data-bs-trigger="focus" data-bs-placement="bottom"
-                                        data-bs-content="Là bác sĩ nha khoa hiện đang công tác tại một phòng khám nha khoa ở Quận 1 thành phồ Hồ Chí Minh. Là một người hiền lành và ít nói. Luôn coi trọng tình cảm và yêu thương gia đình. Với anh: “Gia đình là điểm tựa vững chắc nhất và là bến đỗ bình yên không đâu sánh bằng đối với mỗi con người. Đó luôn là nơi tràn ngập tình yêu thương để ta trở về.”">Xem
-                                        thêm</a>
-                                </div>
-                                <ul class="member-contact social-links d-flex p-0 mb-4">
-                                    <li> <a href="https://facebook.com/" target="_blank"> <i class="bi bi-facebook"></i>
-                                        </a> </li>
-
-                                    <li> <a href="https://twitter.com/" target="_blank"> <i class="bi bi-twitter"></i>
-                                        </a> </li>
-
-                                    <li> <a href="https://instagram.com/" target="_blank"> <i
-                                                class="bi bi-instagram"></i> </a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card member member-bride col">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front p-2 d-flex flex-column justify-content-between border">
-                                <div data-aos="flip-right" class="member-image animation aos-init aos-animate">
-                                    <img
-                                        src="https://cdn.biihappy.com/ziiweb/website/61990349db8f76231c132068/0a34be7c00b62a2bf0186e4e052ad52b.jpeg">
-                                </div>
-                                <div data-aos="fade-right" class="member-name fs-5 my-2 aos-init aos-animate">
-                                    to. BRIDE
-                                </div>
-                                <div class="invitation-groom-parent d-flex flex-column mx-auto text-center">
-                                    <div class="parent-name">Con ông: <span>Ngô Xuân Nghĩa</span></div>
-
-                                    <div class="parent-name">Con bà: <span>Trần Hồng Thắm</span></div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back d-flex flex-column justify-content-between border">
-                                <div class="h-75 wrap-story my-4 px-2">
-                                    <p class="text-hover text-story">
-                                        Cô gái đến từ xứ Huế mộng mơ, hiện đang sinh sống và làm việc tại Sài Gòn. Sau
-                                        khi tốt nghiệp Học viện Báo chí và Tuyên truyền, quyết tâm theo đuổi đam mê làm
-                                        phóng viên du lịch. Là một người hay cười nhưng lại sống nội tâm, thích đọc
-                                        sách, trồng cây và yêu thiên nhiên. Ngoài ra còn rất thích vẽ vời, nuôi mèo và
-                                        nuôi ước mơ có cho mình một vườn hồng khoe sắc.
-                                    </p>
-                                    <a class="fw-bold fs-6 d-none text-center text-decoration-none text-white"
-                                        tabindex="0" role="button" id="btn-show-story" data-bs-toggle="popover"
-                                        data-bs-title="Thanh Mai" data-bs-trigger="focus" data-bs-placement="bottom"
-                                        data-bs-content="Cô gái đến từ xứ Huế mộng mơ, hiện đang sinh sống và làm việc tại Sài Gòn. Sau khi tốt nghiệp Học viện Báo chí và Tuyên truyền, quyết tâm theo đuổi đam mê làm phóng viên du lịch. Là một người hay cười nhưng lại sống nội tâm, thích đọc sách, trồng cây và yêu thiên nhiên. Ngoài ra còn rất thích vẽ vời, nuôi mèo và nuôi ước mơ có cho mình một vườn hồng khoe sắc.">Xem
-                                        thêm</a>
-                                </div>
-                                <ul class="member-contact social-links d-flex p-0 mb-4">
-                                    <li> <a href="https://facebook.com/" target="_blank"> <i class="bi bi-facebook"></i>
-                                        </a> </li>
-
-
-                                    <li> <a href="https://twitter.com/" target="_blank"> <i class="bi bi-twitter"></i>
-                                        </a> </li>
-
-
-                                    <li> <a href="https://instagram.com/" target="_blank"> <i
-                                                class="bi bi-instagram"></i> </a> </li>
-
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -855,7 +885,7 @@
             </div>
         </section>
 
-        <section class="py-5 people-section section-bg-affect" id="people">
+        <!-- <section class="py-5 people-section section-bg-affect" id="people">
             <div class="container-fluid">
                 <h2 data-aos="fade-up" class="section-title text-center aos-init aos-animate">
                     Phù Dâu &amp; Phù Rể
@@ -939,7 +969,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section class="py-5 donate-section section-bg-affect" id="donate">
             <div class="container-fluid ">
@@ -1015,13 +1045,9 @@
                     <form action="https://preview.iwedding.info/?template=643d7a7706109e990f016274" id="wish-form"
                         class="p-3 mb-3 contact-validation-active" novalidate="novalidate">
                         <div class="col-auto mb-3 d-flex">
-                            <div class="me-2 w-50">
+                            <div class="w-100">
                                 <input id="name-comment" type="text" class="form-control border-0"
                                     placeholder="Nhập tên của bạn*" name="name">
-                            </div>
-                            <div class="ms-2 w-50">
-                                <input id="email-comment" type="text" class="form-control border-0" placeholder="E-mail"
-                                    name="email">
                             </div>
                         </div>
                         <div class="col-auto mb-3">
@@ -1968,11 +1994,11 @@
                         Rể</a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="section-sub-title nav-link"
                         href="https://preview.iwedding.info/?template=643d7a7706109e990f016274#people">Phù Dâu &amp; Phù
                         Rể</a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="section-sub-title nav-link"
@@ -2178,6 +2204,72 @@
             padding: 8px 12px;
             border-radius: 8px;
             white-space: nowrap;
+        }
+
+        .main_dday_name {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 767.98px) {
+            .wedding_area .title {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .wedding_area .title .couple-heart {
+                line-height: 1;
+            }
+
+            .main_dday_name.title.py-1.px-3 {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                white-space: normal;
+            }
+
+            .main_dday_name.title.py-1.px-3 span {
+                display: block;
+            }
+
+            .main_dday_name .couple-heart {
+                line-height: 1;
+            }
+
+            .contact-validation-active .col-auto {
+                width: 100%;
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+
+            .contact-validation-active .col-auto.mb-3.d-flex {
+                display: block !important;
+            }
+
+            .contact-validation-active .col-auto.mb-3.d-flex > div {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .contact-validation-active input.form-control,
+            .contact-validation-active textarea.form-control,
+            .contact-validation-active select.form-control {
+                width: 100%;
+            }
+
+            .contact-validation-active .col-auto .d-flex.gap-4 {
+                flex-direction: column;
+                gap: 8px !important;
+            }
         }
     </style>
 
